@@ -2,7 +2,7 @@
 """
 Created on Tue Mar 10 20:36:10 2020
 
-@author: anton
+@author: Tabitha
 """
 
 import numpy as np
@@ -36,7 +36,7 @@ for mu in mu_i:
         psi = psi_init
         psi_prev = 1000000000000
         while np.abs(psi_prev - psi) > tolerance:
-            H = (-mu-U/2)*n + U/2*np.matmul(n,n) -z*t*psi*bdag - z*t*np.conjugate(psi) + z*t*np.absolute(psi)
+            H = (-mu-U/2)*n + U/2*np.matmul(n,n) -z*t*psi*bdag - z*t*np.conjugate(psi)*b + z*t*np.absolute(psi)**2
             E, V = np.linalg.eigh(H)
             idx = np.argsort(E)
             V = V[:,idx]
